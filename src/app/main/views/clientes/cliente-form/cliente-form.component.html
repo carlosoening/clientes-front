@@ -1,0 +1,134 @@
+<mat-progress-bar *ngIf="loading" mode="indeterminate" color="accent"></mat-progress-bar>
+
+<mat-card class="form-card">
+
+  <mat-card-content>
+    <mat-tab-group>
+
+      <mat-tab label="Geral">
+  
+        <form class="form" [formGroup]="clienteForm" fxLayout="column" fxLayoutGap="10px">
+  
+          <mat-form-field appearance="outline">
+              <mat-label>Código</mat-label>
+              <input matInput formControlName="codigo" maxlength="20">
+          </mat-form-field>
+      
+          <mat-form-field appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="nome" maxlength="255">
+          </mat-form-field>
+      
+          <mat-form-field appearance="outline">
+              <mat-label>E-mail</mat-label>
+              <input matInput formControlName="email" maxlength="255" type="email">
+          </mat-form-field>
+      
+          <mat-form-field appearance="outline">
+            <mat-label>Febraban</mat-label>
+            <input matInput formControlName="febraban" maxlength="100">
+          </mat-form-field>
+      
+          <mat-form-field appearance="outline">
+            <mat-label>Telefone</mat-label>
+            <input matInput formControlName="telefone" maxlength="100">
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Técnico Responsável</mat-label>
+            <input matInput formControlName="tecnicoresponsavel" maxlength="100">
+          </mat-form-field>
+      
+        </form>
+        
+        <div class="buscar-versao-container">
+          <button class="buscar-versao-btn" mat-raised-button (click)="buscarVersao()" color="primary">Buscar Versão</button>
+          <mat-form-field appearance="outline">
+            <input matInput readonly [(ngModel)]="versaoGsan">
+          </mat-form-field>
+        </div>
+
+      </mat-tab>
+  
+      <mat-tab label="Backups">
+
+        <div class="actions" fxLayout="row" fxLayoutAlign="end center">
+          <button mat-mini-fab color="primary" (click)="addBackupConfig()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+        <mat-card class="list-cards mat-elevation-z8" *ngFor="let backupConfig of cliente.backupconfigs">
+          <app-backup-config-details
+            [backupConfig]="backupConfig" 
+            [readonly]="true" 
+            (onEdit)="editBackupConfig(backupConfig)"
+            (onDelete)="deleteBackupConfig(backupConfig)"
+          >
+          </app-backup-config-details>
+        </mat-card>
+
+      </mat-tab>
+      
+      <mat-tab label="Conexões">
+
+        <div class="actions" fxLayout="row" fxLayoutAlign="end center">
+          <button mat-mini-fab color="primary" (click)="addConexao()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+        <mat-card class="list-cards mat-elevation-z8" *ngFor="let conexao of cliente.conexoes">
+          <app-conexao-details
+            [conexao]="conexao" 
+            [readonly]="true" 
+            (onEdit)="editConexao(conexao)"
+            (onDelete)="deleteConexao(conexao)"
+          >
+          </app-conexao-details>
+        </mat-card>
+
+      </mat-tab>
+  
+      <mat-tab label="Contatos">
+
+        <div class="actions" fxLayout="row" fxLayoutAlign="end center">
+          <button mat-mini-fab color="primary" (click)="addContato()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+        <mat-card class="list-cards mat-elevation-z8" *ngFor="let contato of cliente.contatos">
+          <app-contato-details
+            [contato]="contato" 
+            [readonly]="true" 
+            (onEdit)="editContato(contato)"
+            (onDelete)="deleteContato(contato)"
+          >
+          </app-contato-details>
+        </mat-card>
+
+      </mat-tab>
+
+      <mat-tab label="Sistemas">
+
+        <div class="actions" fxLayout="row" fxLayoutAlign="end center">
+          <button mat-mini-fab color="primary" (click)="addSistema()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+        <div cdkDropList (cdkDropListDropped)="drop($event)">
+          <mat-card class="list-cards mat-elevation-z8" *ngFor="let sistema of cliente.sistemas" cdkDrag>
+            <app-sistema-details
+              [sistema]="sistema" 
+              [readonly]="true" 
+              (onEdit)="editSistema(sistema)"
+              (onDelete)="deleteSistema(sistema)"
+            >
+            </app-sistema-details>
+          </mat-card>
+        </div>
+
+      </mat-tab>
+
+    </mat-tab-group>
+  </mat-card-content>
+
+</mat-card>

@@ -1,0 +1,23 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+}
+
+mat-sidenav {
+  width: 200px;
+  border-right: none;
+  padding: 16px;
+  text-align: center;
+}
+
+mat-sidenav-container {
+  height: 100vh;
+}
+
+.menu-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1rem;
+}

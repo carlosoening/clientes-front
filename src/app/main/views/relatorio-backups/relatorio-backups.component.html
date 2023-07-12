@@ -1,0 +1,36 @@
+<mat-card class="form-card">
+  <form [formGroup]="filtrosForm" fxLayout="column" fxLayoutGap="10px">
+
+    <div>
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Data Inicial</mat-label>
+        <input matInput formControlName="dataInicial" type="date">
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Data Final</mat-label>
+        <input matInput formControlName="dataFinal" type="date">
+      </mat-form-field>
+
+    </div>
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Clientes</mat-label>
+      <mat-select formControlName="idCliente">
+        <mat-option [value]="0">Todos</mat-option>
+        <mat-option *ngFor="let cliente of clientes" [value]="cliente.id">{{ cliente.nome }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="opcao-container">
+      <mat-radio-group formControlName="opcao">
+        <mat-radio-button value="existentes">Existentes</mat-radio-button>
+        <mat-radio-button value="inexistentes">Inexistentes</mat-radio-button>
+        <mat-radio-button value="ambos">Ambos</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    
+    <button mat-raised-button color="primary" (click)="gerarRelatorio()">Gerar</button>
+  </form>
+  <mat-progress-bar style="margin-top: 10px" *ngIf="loading" mode="indeterminate" color="accent"></mat-progress-bar>
+</mat-card>

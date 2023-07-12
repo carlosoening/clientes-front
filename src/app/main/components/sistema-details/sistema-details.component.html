@@ -1,0 +1,42 @@
+<div fxLayout="column">
+  <div fxFlex fxLayoutAlign="space-between center" *ngIf="readonly">
+    <mat-icon class="drag-icon">open_with</mat-icon>
+    <div>
+      <button mat-icon-button (click)="edit()" color="primary">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="delete()" color="warn">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+  <form [formGroup]="sistemaForm" fxLayout="column">
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="nome" [readonly]="readonly" maxlength="20">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>URL</mat-label>
+      <input matInput formControlName="url" [readonly]="readonly" maxlength="255">
+      <button mat-icon-button matSuffix (click)="abrirUrlSistema()">
+        <mat-icon>open_in_new</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Tipo</mat-label>
+      <input *ngIf="readonly" matInput formControlName="tipo" [readonly]="readonly">
+      <mat-select *ngIf="!readonly" formControlName="tipo" [disabled]="readonly">
+        <mat-option [value]="tipoSistemaEnum.GSAN_INTERNO">GSAN Interno</mat-option>
+        <mat-option [value]="tipoSistemaEnum.GSAN_EXTERNO">GSAN Externo</mat-option>
+        <mat-option [value]="tipoSistemaEnum.GESTOR_INTERNO">Gestor Interno</mat-option>
+        <mat-option [value]="tipoSistemaEnum.GESTOR_EXTERNO">Gestor Externo</mat-option>
+        <mat-option [value]="tipoSistemaEnum.OUTRO">Outro</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </form>
+
+</div>

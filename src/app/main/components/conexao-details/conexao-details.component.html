@@ -1,0 +1,44 @@
+<div fxLayout="column">
+  <div fxFlex fxLayoutAlign="end center" *ngIf="readonly">
+    <button mat-icon-button (click)="edit()" color="primary">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button (click)="delete()" color="warn">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+  <form [formGroup]="conexaoForm" fxLayout="column">
+    
+    <mat-form-field *ngIf="readonly" appearance="outline" class="form-field">
+      <mat-label>ID</mat-label>
+      <input matInput formControlName="id" [readonly]="readonly">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Tipo de Conexão</mat-label>
+      <input *ngIf="readonly" matInput formControlName="tipoconexao_id" [readonly]="readonly">
+      <mat-select *ngIf="!readonly" formControlName="tipoconexao_id" [disabled]="readonly">
+        <mat-option *ngFor="let tipoConexao of tiposConexao" [value]="tipoConexao.id">
+          {{ tipoConexao.nome }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>IP</mat-label>
+      <input matInput formControlName="ip" [readonly]="readonly" maxlength="30">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Usuário</mat-label>
+      <input matInput formControlName="usuario" [readonly]="readonly" maxlength="255">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Senha</mat-label>
+      <input matInput formControlName="senha" [readonly]="readonly" maxlength="255">
+    </mat-form-field>
+
+  </form>
+
+</div>

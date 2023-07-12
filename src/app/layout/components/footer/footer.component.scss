@@ -1,0 +1,23 @@
+.footer-text {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); 
+}
+
+.divider {
+  margin: 0 8px;
+}
+
+@media screen and (max-width: 599px) {
+  .center {
+    position: relative; 
+    left: auto;
+    transform: none;
+    top: 10px;
+  }
+}

@@ -1,0 +1,54 @@
+mat-table {
+
+  .mat-row {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .mat-column-id {
+    flex: 0 0 10%;
+  }
+  
+  .mat-column-codigo {
+    flex: 0 0 20%;
+  }
+
+  .mat-column-nome {
+    flex: 0 0 40%;
+  }
+  
+  .mat-column-febraban {
+    flex: 0 0 20%;
+  }
+
+  .mat-column-acoes {
+    flex: 1 1 10%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  mat-table {
+
+    .mat-row {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    
+    .mat-column-id {
+      flex: 0 0 10%;
+    }
+    
+    .mat-column-codigo {
+      flex: 0 0 30%;
+    }
+  
+    .mat-column-nome {
+      flex: 0 0 40%;
+    }
+  
+    .mat-column-acoes {
+      flex: 1 1 20%;
+    }
+  }
+}

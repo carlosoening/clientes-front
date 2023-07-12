@@ -1,0 +1,71 @@
+<mat-toolbar fxFlex fxLayout="column" color="primary" *ngIf="authService.isAutenticado()">
+  <mat-toolbar-row class="mat-elevation-z6">
+    <div fxHide.gt-sm>
+      <button mat-icon-button (click)="onToggleSidenav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <div fxHide.lt-md fxFlex fxLayout="row">
+      <span class="home" (click)="goHome()">Clientes LogPro</span>
+      <mat-divider [vertical]="true" class="divider"></mat-divider>
+      <a mat-button routerLinkActive="active-link" routerLink="clientes">Clientes</a>
+      <a mat-button routerLinkActive="active-link" routerLink="usuarios">Usuários</a>
+      <a mat-button routerLinkActive="active-link" routerLink="sqls">SQLs</a>
+      <a mat-button routerLinkActive="active-link" routerLink="tipos-conexao">Tipos de Conexão</a>
+      <a mat-button routerLinkActive="active-link" routerLink="tipos-servidor">Tipos de Servidor</a>
+      <a mat-button routerLinkActive="active-link" routerLink="relatorio-backups">Relatório Backups</a>
+    </div>
+    <span class="spacer"></span>
+    <button mat-button [matMenuTriggerFor]="options">
+      <span>{{ usuarioLogado?.username }}</span>
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #options="matMenu">
+      <button mat-menu-item (click)="$event.stopPropagation()">
+        <mat-slide-toggle [checked]="isDarkTheme" 
+          (change)="toggleDarkTheme($event.checked)"
+        >
+          Tema Escuro
+        </mat-slide-toggle>
+      </button>
+      <button mat-menu-item routerLink="alterar-senha">
+        <mat-icon>lock</mat-icon>
+        <span>Alterar Senha</span>
+      </button>
+      <button mat-menu-item routerLink="login" (click)="fazerLogout()">
+        <mat-icon>logout</mat-icon>
+        <span>Sair</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+    <button *ngIf="arrowBack" mat-icon-button (click)="previousRoute()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span class="ml-15">{{ title }}</span>
+    <span class="spacer"></span>
+    <div *ngIf="searchInput" class="search-container">
+      <div class="div-input">
+        <input class="search-input" type="text" placeholder="Procurar" (input)="onSearchChange($event)">
+        <mat-icon class="search-icon">search</mat-icon>
+      </div>
+      <div class="div-button-search">
+        <button mat-mini-fab color="primary" [matMenuTriggerFor]="search">
+          <mat-icon>search</mat-icon>
+        </button>
+        <mat-menu #search>
+          <div (click)="$event.stopPropagation()">
+            <input class="search-input-menu" type="text" placeholder="Procurar" (input)="onSearchChange($event)">
+          </div>
+        </mat-menu>
+      </div>
+    </div>
+    <span class="spacer"></span>
+    <button *ngIf="buttonType" mat-mini-fab color="accent" class="mr-15"
+      (click)="onButtonClick()" 
+      [disabled]="disableButton"
+    >
+      <mat-icon>{{ icon }}</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>

@@ -1,0 +1,46 @@
+
+  <div *ngIf="tiposServidor$ | async as tiposServidor; else loading">
+    <mat-table [dataSource]="tiposServidor" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+        <mat-cell *matCellDef="let tipoServidor"> {{tipoServidor.id}} </mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="codigo">
+        <mat-header-cell *matHeaderCellDef> Código </mat-header-cell>
+        <mat-cell *matCellDef="let tipoServidor"> {{tipoServidor.codigo}} </mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="nome">
+        <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let tipoServidor"> {{tipoServidor.nome}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="acoes">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let tipoServidor">
+          <button mat-icon-button [matMenuTriggerFor]="more" (click)="$event.stopPropagation();">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #more="matMenu">
+            <button mat-menu-item (click)="goToItem(tipoServidor)">
+              <mat-icon>edit</mat-icon>
+              <span>Editar</span>
+            </button>
+            <button mat-menu-item (click)="deleteItem(tipoServidor)">
+              <mat-icon>delete</mat-icon>
+              <span>Excluir</span>
+            </button>
+          </mat-menu>
+        </mat-cell>
+      </ng-container>
+    
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="goToItem(row)"></mat-row>
+    </mat-table>
+  </div>
+
+  <ng-template #loading>
+    <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
+  </ng-template>

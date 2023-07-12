@@ -1,0 +1,18 @@
+<div [ngClass]="{'dark-theme': isDarkTheme}">
+  <div class="mat-app-background">
+    <app-layout>
+    <mat-sidenav-container class="mat-elevation-z4">
+      <mat-sidenav fxHide.gt-sm mode="over" #sidenav role="navigation">
+        <app-sidenav-list (sidenavClose)="sidenav.close()"></app-sidenav-list>
+      </mat-sidenav>
+      <mat-sidenav-content fxLayout="column">
+        <app-header (sidenavToggle)="sidenav.toggle()" style="overflow: hidden;"></app-header>
+        <main fxFlex style="overflow: auto;">
+            <router-outlet></router-outlet>
+          </main>
+          <app-footer style="overflow: hidden;"></app-footer>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+    </app-layout>
+  </div>
+</div>

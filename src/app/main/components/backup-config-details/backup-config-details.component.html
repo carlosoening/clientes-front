@@ -1,0 +1,99 @@
+<div fxLayout="column">
+  <div fxFlex fxLayoutAlign="end center" *ngIf="readonly">
+    <button mat-icon-button (click)="edit()" color="primary">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button (click)="delete()" color="warn">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+  <form [formGroup]="backupForm">
+    
+    <mat-form-field *ngIf="readonly" appearance="outline" class="form-field">
+      <mat-label>ID</mat-label>
+      <input matInput formControlName="id" [readonly]="readonly">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Descrição</mat-label>
+      <input matInput formControlName="descricao" [readonly]="readonly" maxlength="255">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Usuário</mat-label>
+      <input matInput formControlName="usuariodb" [readonly]="readonly" maxlength="100">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Senha</mat-label>
+      <input matInput formControlName="senhadb" [readonly]="readonly" maxlength="255">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Banco de Dados</mat-label>
+      <input matInput formControlName="nomedb" [readonly]="readonly" maxlength="255">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Host</mat-label>
+      <input matInput formControlName="host" [readonly]="readonly" maxlength="255">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Porta</mat-label>
+      <input matInput formControlName="port" [readonly]="readonly" type="number">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Caminho Backup</mat-label>
+      <input matInput formControlName="caminhobackup" [readonly]="readonly" maxlength="255">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Caminho Java</mat-label>
+      <input matInput formControlName="caminhojava" [readonly]="readonly" maxlength="255">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Caminho PG_DUMP</mat-label>
+      <input matInput formControlName="caminhopgdump" [readonly]="readonly" maxlength="255">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Caminho SendHostJar</mat-label>
+      <input matInput formControlName="caminhosendhostjar" [readonly]="readonly" maxlength="255">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Hora da Execução do Backup</mat-label>
+      <input matInput formControlName="horaexecucaobackup" [readonly]="readonly" type="time">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Tipo de Servidor</mat-label>
+      <input *ngIf="readonly" matInput formControlName="tiposervidor_id" [readonly]="readonly">
+      <mat-select *ngIf="!readonly" formControlName="tiposervidor_id" [disabled]="readonly">
+        <mat-option *ngFor="let tipoServidor of tiposServidor" [value]="tipoServidor.id">
+          {{ tipoServidor.nome }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Hostname Nuvem</mat-label>
+      <input matInput formControlName="hostnamenuvem" [readonly]="readonly" maxlength="255">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Diretório Nuvem</mat-label>
+      <input matInput formControlName="nomediretorionuvem" [readonly]="readonly" maxlength="255">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Quantidade em Dias na Nuvem</mat-label>
+      <input matInput formControlName="qtdiasbackupnuvem" [readonly]="readonly" type="number">
+    </mat-form-field>
+
+  </form>
+
+</div>

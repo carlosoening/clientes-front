@@ -1,0 +1,22 @@
+<mat-progress-bar *ngIf="loading" mode="indeterminate" color="accent"></mat-progress-bar>
+
+<mat-card class="form-card">
+  <form [formGroup]="sqlForm" fxLayout="column" fxLayoutGap="10px">
+
+    <mat-form-field appearance="outline">
+        <mat-label>Código</mat-label>
+        <input matInput formControlName="codigo" maxlength="100">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Descrição</mat-label>
+      <input matInput formControlName="descricao" maxlength="255">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>SQL</mat-label>
+      <textarea matInput formControlName="sql" rows="15"></textarea>
+    </mat-form-field>
+
+  </form>
+</mat-card>

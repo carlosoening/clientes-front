@@ -1,0 +1,11 @@
+.form-field {
+  padding: 0 6px;
+  width: 48%;
+}
+
+@media screen and (max-width: 700px) {
+  .form-field {
+    padding: 0 6px;
+    width: 100%;
+  }
+}

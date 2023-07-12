@@ -1,0 +1,29 @@
+.form-card {
+  margin: 10px;
+}
+
+.form-field {
+  padding: 0 6px;
+  width: 48%;
+}
+
+@media screen and (max-width: 901px) {
+  .form-field {
+    padding: 0 6px;
+    width: 100%;
+  }
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+.opcao-container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}

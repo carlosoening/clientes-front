@@ -1,0 +1,107 @@
+.spacer {
+  flex: 1 1 auto;
+  min-width: 20px;
+}
+
+.title {
+  margin-right: 20px;
+}
+
+.divider {
+  margin: 0 20px;
+  font-weight: bold;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+}
+
+.home {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.mr-15 {
+  margin-right: 15px;
+}
+
+.ml-15 {
+  margin-left: 15px;
+}
+
+.search-container {
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.div-input {
+  background-color: white;
+  border-radius: 50px;
+  max-width: 400px;
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.search-input {
+  flex: 1 1 auto;
+  width: 100%;
+  height: 26px;
+  border-radius: 50px;
+  padding-left: 15px;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+}
+
+.search-input-menu {
+  flex: 1 1 auto;
+  width: 90%;
+  padding-left: 10px;
+  height: 26px;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+}
+
+.search-icon {
+  color: rgba(73, 73, 73, 0.863); 
+  padding: 0 8px;
+}
+
+.input-space {
+  max-width: 400px;
+}
+
+.div-button-search {
+  display: none;
+}
+
+.menu-search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 450px) {
+  .div-input {
+    display: none;
+  }
+
+  .div-button-search {
+    display: flex;
+  }
+}
+
+.active-link {
+  background-color: rgb(78, 0, 167);
+}

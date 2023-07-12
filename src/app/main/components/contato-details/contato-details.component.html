@@ -1,0 +1,34 @@
+<div fxLayout="column">
+  <div fxFlex fxLayoutAlign="end center" *ngIf="readonly">
+    <button mat-icon-button (click)="edit()" color="primary">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button (click)="delete()" color="warn">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+  <form [formGroup]="contatoForm" fxLayout="column">
+    
+    <mat-form-field *ngIf="readonly" appearance="outline" class="form-field">
+      <mat-label>ID</mat-label>
+      <input matInput formControlName="id" [readonly]="readonly">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="nome" [readonly]="readonly" maxlength="20">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>E-mail</mat-label>
+      <input matInput formControlName="email" [readonly]="readonly" maxlength="255">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Telefone</mat-label>
+      <input matInput formControlName="telefone" [readonly]="readonly" maxlength="255">
+    </mat-form-field>
+
+  </form>
+
+</div>

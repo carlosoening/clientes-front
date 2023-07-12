@@ -1,0 +1,14 @@
+<div mat-dialog-title>{{ title }}</div>
+<div mat-dialog-content>
+  <app-conexao-details 
+    [conexao]="conexao" 
+    [onGetData]="onGetData"
+    (getData)="getData($event)"
+    (isValid)="isValid($event)">
+  </app-conexao-details>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close cdkFocusInitial color="warn">Cancelar</button>
+  <button mat-raised-button (click)="salvar()" color="primary"
+    [disabled]="!permiteSalvar">Salvar</button>
+</div>

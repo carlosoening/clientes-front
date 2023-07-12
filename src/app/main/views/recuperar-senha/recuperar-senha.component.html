@@ -1,0 +1,44 @@
+<div class="recuperar-senha-div">
+  <mat-card class="recuperar-senha-card">
+      <mat-card-title class="recuperar-senha-card-title">
+        <span *ngIf="etapa === 'recuperarSenhaComEmail' || etapa === 'emailEnviado'">Recupere sua senha</span>
+        <span *ngIf="etapa === 'redefinirSenha'">Redefinir senha</span>
+      </mat-card-title>
+      <mat-card-content *ngIf="etapa === 'recuperarSenhaComEmail'">
+          <form [formGroup]="recuperarSenhaForm" fxLayout="column" fxLayoutGap="20px" class="recuperar-senha-form"
+              (submit)="enviarEmailRecuperarSenha()">
+              <mat-form-field appearance="outline">
+                  <mat-label>E-mail</mat-label>
+                  <input matInput formControlName="email">
+              </mat-form-field>
+              <button mat-raised-button color="primary" [disabled]="loading" type="submit" [disabled]="!recuperarSenhaForm.valid">Enviar</button>
+          </form>
+      </mat-card-content>
+      <mat-card-content *ngIf="etapa === 'emailEnviado'" fxLayout="column" fxLayoutGap="10px" 
+        fxFlexlayoutAlign="center center" class="card-content">
+        <div class="center-text font-size-16">E-mail enviado!</div>
+        <div class="center-text font-size-16">Verifique seu e-mail</div>
+      </mat-card-content>
+      <mat-card-content *ngIf="etapa === 'redefinirSenha'">
+        <form [formGroup]="novaSenhaForm" fxLayout="column" fxLayoutGap="20px" class="recuperar-senha-form"
+          (submit)="redefinirSenha()">
+          <mat-form-field appearance="outline">
+            <mat-label>Nova Senha</mat-label>
+            <input matInput formControlName="senha" type="password">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+              <mat-label>Confirmar Senha</mat-label>
+              <input matInput formControlName="confirmarSenha" type="password">
+              <mat-error *ngIf="!novaSenhaForm.get('confirmarSenha')?.hasError('required') &&
+                novaSenhaForm.get('confirmarSenha')?.hasError('passwordsNotMatching')">
+                Senha não confere
+              </mat-error>
+          </mat-form-field>
+          <button mat-raised-button color="primary" [disabled]="loading" type="submit" [disabled]="!novaSenhaForm.valid">
+            Enviar
+          </button>
+      </form>
+      </mat-card-content>
+      <mat-progress-bar *ngIf="loading" mode="indeterminate" color="accent"></mat-progress-bar>
+  </mat-card>
+</div>

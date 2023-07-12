@@ -1,0 +1,29 @@
+.login-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 64px);
+}
+
+.login-card {
+  margin: 0 auto;
+  width: 70%;
+  max-width: 400px;
+}
+
+.login-card-title {
+  text-align: center;
+}
+
+.login-form {
+  padding: 20px;
+}
+
+.esqueceu-senha-link {
+  align-self: center;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

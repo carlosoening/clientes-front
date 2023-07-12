@@ -1,0 +1,32 @@
+<div class="container">
+  <mat-card class="card">
+      <mat-card-title class="card-title">Alterar Senha</mat-card-title>
+      <mat-card-content>
+          <form [formGroup]="alterarSenhaForm" fxLayout="column" fxLayoutGap="20px" class="form"
+              (submit)="alterarSenha()">
+              <mat-form-field appearance="outline">
+                  <mat-label>Senha Atual</mat-label>
+                  <input matInput formControlName="senhaAtual" type="password">
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                  <mat-label>Nova Senha</mat-label>
+                  <input matInput formControlName="novaSenha" type="password">
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                  <mat-label>Confirmar Senha</mat-label>
+                  <input matInput formControlName="confirmarSenha" type="password">
+                  <mat-error *ngIf="!alterarSenhaForm.get('confirmarSenha')?.hasError('required') &&
+                    alterarSenhaForm.get('confirmarSenha')?.hasError('passwordsNotMatching')">
+                    Senha não confere
+                  </mat-error>
+              </mat-form-field>
+              <button mat-raised-button color="primary" 
+                [disabled]="loading" type="submit" 
+                [disabled]="!alterarSenhaForm.valid">
+                Enviar
+              </button>
+          </form>
+      </mat-card-content>
+      <mat-progress-bar *ngIf="loading" mode="indeterminate" color="accent"></mat-progress-bar>
+  </mat-card>
+</div>
