@@ -9,6 +9,7 @@ import { AppMaterialModule } from 'src/app/shared/app-material/app-material.modu
 import { SqlService } from '../../service/sql.service';
 import { SqlFormComponent } from './sql-form/sql-form.component';
 import { SqlsListComponent } from './sqls-list/sqls-list.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const routes: Routes = [
   {
@@ -38,6 +39,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     FlexLayoutModule,
     MatSortModule,
+    MatTooltipModule
   ],
   providers: [
     SqlService,

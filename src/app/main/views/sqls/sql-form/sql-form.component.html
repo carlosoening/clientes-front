@@ -13,6 +13,14 @@
       <input matInput formControlName="descricao" maxlength="255">
     </mat-form-field>
 
+    <div fxFlex fxLayoutAlign="start">
+      <button mat-mini-fab color="primary"
+        (click)="copyToClipboard()"
+        matTooltip="Copiar SQL" matTooltipPosition="right">
+        <mat-icon>content_copy</mat-icon>
+      </button>
+    </div>
+
     <mat-form-field appearance="outline">
       <mat-label>SQL</mat-label>
       <textarea matInput formControlName="sql" rows="15"></textarea>

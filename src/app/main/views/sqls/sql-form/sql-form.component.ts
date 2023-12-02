@@ -7,6 +7,7 @@ import { HeaderService } from 'src/app/layout/components/header/header.service';
 import { Sql } from 'src/app/main/model/sql.model';
 import { SqlService } from 'src/app/main/service/sql.service';
 import { LoggerService } from 'src/app/shared/loggers/logger.service';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-sql-form',
@@ -27,6 +28,7 @@ export class SqlFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private service: SqlService,
     private logger: LoggerService,
+    private clipboard: Clipboard,
   ) { 
     this.sql = new Sql();
     this.sqlForm = this.formBuilder.group({
@@ -138,5 +140,10 @@ export class SqlFormComponent implements OnInit {
       route: this.route,
       disableButton
     };
+  }
+
+  copyToClipboard() {
+    this.clipboard.copy(this.sqlForm.controls['sql'].value);
+    this.logger.success('SQL copiado para a área de transferência!')
   }
 }
